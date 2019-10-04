@@ -1,3 +1,9 @@
+# Test data folder
+data
+
+# Test binary
+Test
+
 # Prerequisites
 *.d
 

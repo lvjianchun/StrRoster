@@ -34,7 +34,7 @@
 #include <string>
 #include <vector>
 
-#include "HashFunctions.h"
+typedef uint32_t(* HASH_FUNCTION_PTR)(const char *str);
 
 namespace StrRosterNS {
 
@@ -108,7 +108,7 @@ class StrRoster {
    * @param str Out variable to store retrived string if succeed
    * @return succeed or not
    */
-  bool ID2Str(uint32_t id, std::string& str);
+  bool ID2Str(uint32_t id, std::string* p_str);
 
   /**
    * Given a ID, find its corresponding string
@@ -121,7 +121,6 @@ class StrRoster {
  private:
   // variables
   static HASH_FUNCTION_PTR hash_functions_[6];
-  uint32_t size_;
   uint32_t estimated_count_;
   uint32_t table_size_;
   uint32_t* hash_table_;
@@ -129,7 +128,7 @@ class StrRoster {
   std::vector<uint32_t> index_;
 
   // functions
-  uint32_t internal_add(std::string& str, uint32_t hash_value);
+  uint32_t InternalAdd(std::string& str, uint32_t hash_value);
 };
 
 }  // namespace StrRosterNS

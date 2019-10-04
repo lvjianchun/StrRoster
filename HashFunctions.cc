@@ -1,5 +1,7 @@
 #include "HashFunctions.h"
 
+namespace StrRosterNS {
+
 // BKDR Hash Function
 uint32_t BKDRHash(const char *str) {
   uint32_t seed = 131; // 31 131 1313 13131 131313 etc..
@@ -76,3 +78,5 @@ uint32_t SDBMHash(const char *str) {
   return (hash & 0x7FFFFFFF);
 }
  
+}  // namespace StrRosterNS
+

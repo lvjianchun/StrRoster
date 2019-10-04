@@ -15,8 +15,9 @@ void SearchStr(StrRoster* sr, std::string str) {
 }
 
 void SearchID(StrRoster* sr, uint32_t id) {
-  std::string str;
-  bool succ = sr->ID2Str(id, str);
+  std::string str("");
+  bool succ = sr->ID2Str(id, &str);
+  // std::cout << "Search id '" << id << "', succeed:" << (succ ? "true" : "false") << ", corresponding string size:" << str.size() << std::endl;
   std::cout << "Search id '" << id << "', succeed:" << (succ ? "true" : "false") << ", corresponding string is: " << str << std::endl;
 }
 
@@ -40,5 +41,16 @@ int main() {
   }
   for (std::string s : test_data) {
     SearchStr(&sr, s+"a");
+  }
+  sr.Dump("data");
+  StrRoster sr2("data");
+  for (std::string s : test_data) {
+    SearchStr(&sr2, s);
+  }
+  for (int i = 0; i <= test_data.size()+1; ++i) {
+    SearchID(&sr2, i);
+  }
+  for (std::string s : test_data) {
+    SearchStr(&sr2, s+"a");
   }
 }
