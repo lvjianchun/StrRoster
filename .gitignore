@@ -1,8 +1,5 @@
-# Test data folder
-data
-
-# Test binary
-Test
+# build folder
+build
 
 # Prerequisites
 *.d
